@@ -21,19 +21,19 @@ class GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   double bottom = 500.0;
 
   AnimationController _characterAnimationController;
-  Animation<FractionalOffset> _characterPosition;
+  Animation<Offset> _characterPosition;
   //______________________________________________________________//
 
   //-- Obstacle declarations --//
 
   List<AnimationController> _controllers = new List();
-  List<Animation<FractionalOffset>> _topPositions = new List();
-  List<Animation<FractionalOffset>> _botPositions = new List();
+  List<Animation<Offset>> _topPositions = new List();
+  List<Animation<Offset>> _botPositions = new List();
 
   List<double> topBarHeights = new List();
   List<double> bottomBarHeights = new List();
 
-  Animation<FractionalOffset> timer;
+  Animation<Offset> timer;
 
   Random rand = new Random();
   double topBarHeight;
@@ -53,9 +53,9 @@ class GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 300),
     );
 
-    _characterPosition = new FractionalOffsetTween(
-      begin: const FractionalOffset(0.0, 0.0),
-      end: const FractionalOffset(0.0, -10.0),
+    _characterPosition = new Tween<Offset>(
+      begin: const Offset(0.0, 0.0),
+      end: const Offset(0.0, -10.0),
     ).animate(new CurvedAnimation(
       parent: _characterAnimationController,
       curve: Curves.easeOut,
@@ -91,9 +91,9 @@ class GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
 
     for (int i = 0; i < 2; i++) {
       _topPositions.add(
-        new FractionalOffsetTween(
-          begin: const FractionalOffset(0.2, 0.0),
-          end: const FractionalOffset(-1.0, 0.0),
+        new Tween<Offset>(
+          begin: const Offset(0.2, 0.0),
+          end: const Offset(-1.0, 0.0),
         ).animate(
           new CurvedAnimation(
             parent: _controllers[i],
@@ -111,9 +111,9 @@ class GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
       );
 
       _botPositions.add(
-        new FractionalOffsetTween(
-          begin: const FractionalOffset(0.2, 0.0),
-          end: const FractionalOffset(-1.0, 0.0),
+        new Tween<Offset>(
+          begin: const Offset(0.2, 0.0),
+          end: const Offset(-1.0, 0.0),
         ).animate(
           new CurvedAnimation(
             parent: _controllers[i+2],
@@ -134,9 +134,9 @@ class GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
       );
     }
 
-    timer = new FractionalOffsetTween(
-      begin: const FractionalOffset(0.2, 0.0),
-      end: const FractionalOffset(-1.0, 0.0),
+    timer = new Tween<Offset>(
+      begin: const Offset(0.2, 0.0),
+      end: const Offset(-1.0, 0.0),
     ).animate(
       new CurvedAnimation(
         parent: _controllers[4],

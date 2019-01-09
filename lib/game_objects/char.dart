@@ -11,7 +11,7 @@ class Character extends StatefulWidget {
 class CharacterState extends State<Character> with TickerProviderStateMixin {
 
   AnimationController _controller;
-  Animation<FractionalOffset> _charPos;
+  Animation<Offset> _charPos;
 
   @override
   void initState() {
@@ -20,9 +20,9 @@ class CharacterState extends State<Character> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
-    _charPos = new FractionalOffsetTween(
-      begin: const FractionalOffset(0.0, 0.0),
-      end: const FractionalOffset(0.0, -0.3),
+    _charPos = new Tween<Offset>(
+      begin: const Offset(0.0, 0.0),
+      end: const Offset(0.0, -0.3),
     ).animate(new CurvedAnimation(
       parent: _controller,
       curve: Curves.easeOut,
